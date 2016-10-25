@@ -31,6 +31,7 @@ feed_url = str(gh.feeds()['current_user_url'])
 wilcox_aliases = ['DigitalLeprechaun', 'Joe Wilcox']
 wilcox_alert = 'WILCOX DETECTED'
 
+
 @bot.event
 async def on_ready():
     logging.info('Logged in as {} {} at {}'.format(bot.user.name, bot.user.id, time.ctime()))
