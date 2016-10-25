@@ -2,3 +2,4 @@ discord.py==0.11.0
 feedparser==5.2.1
 github3.py==1.0.0a4
 beautifulsoup4==4.5.1
+gunicorn
