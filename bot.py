@@ -37,7 +37,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def start():
-    bot.run(auth.BOT_TOKEN)
+    print("bot started")
 
 
 @bot.event
@@ -157,4 +157,5 @@ async def parse_feed():
     await send(discord_message)
 
 if __name__ == "__main__":
+    bot.run(auth.BOT_TOKEN)
     app.run()
