@@ -1,1 +1,1 @@
-worker: python Ara.py
+worker: python bot.py
