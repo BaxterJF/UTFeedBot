@@ -1,4 +1,3 @@
-from flask import Flask
 from github3 import GitHub
 import sqlite3
 from bs4 import BeautifulSoup
@@ -31,8 +30,6 @@ feed_url = str(gh.feeds()['current_user_url'])
 
 wilcox_aliases = ['DigitalLeprechaun', 'Joe Wilcox']
 wilcox_alert = 'WILCOX DETECTED'
-
-app = Flask(__name__)
 
 
 @app.route("/")
@@ -89,7 +86,7 @@ async def valid_feed(feed):
 async def valid_entry(entry, soup):
     # if not entry[3]['value'] == 'commit event':
     if not soup.svg['class'][1] == 'octicon-git-commit' or not entry.id:
-        #logging.info('{}'.format(soup.svg['class'][1]))
+        # logging.info('{}'.format(soup.svg['class'][1]))
         return False
     return True
 
@@ -156,6 +153,4 @@ async def parse_feed():
 
     await send(discord_message)
 
-if __name__ == "__main__":
-    bot.run(auth.BOT_TOKEN)
-    # app.run(debug=True)
+bot.run(auth.BOT_TOKEN)
