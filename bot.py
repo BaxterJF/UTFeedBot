@@ -12,8 +12,6 @@ from datetime import datetime
 import auth
 import style
 
-app = Flask(__name__)
-
 bot = discord.Client()
 logging.basicConfig(level=logging.INFO)
 
@@ -34,8 +32,14 @@ feed_url = str(gh.feeds()['current_user_url'])
 wilcox_aliases = ['DigitalLeprechaun', 'Joe Wilcox']
 wilcox_alert = 'WILCOX DETECTED'
 
+app = Flask(__name__)
+
 
 @app.route("/")
+def start():
+    bot.run(auth.BOT_TOKEN)
+
+
 @bot.event
 async def on_ready():
     logging.info('Logged in as {} {} at {}'.format(bot.user.name, bot.user.id, time.ctime()))
@@ -151,8 +155,6 @@ async def parse_feed():
             db.commit()
 
     await send(discord_message)
-
-bot.run(auth.BOT_TOKEN)
 
 if __name__ == "__main__":
     app.run()
