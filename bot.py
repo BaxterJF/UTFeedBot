@@ -1,3 +1,4 @@
+from flask import Flask
 from github3 import GitHub
 import sqlite3
 from bs4 import BeautifulSoup
@@ -10,6 +11,8 @@ from time import mktime
 from datetime import datetime
 import auth
 import style
+
+app = Flask(__name__)
 
 bot = discord.Client()
 logging.basicConfig(level=logging.INFO)
@@ -32,6 +35,7 @@ wilcox_aliases = ['DigitalLeprechaun', 'Joe Wilcox']
 wilcox_alert = 'WILCOX DETECTED'
 
 
+@app.route("/")
 @bot.event
 async def on_ready():
     logging.info('Logged in as {} {} at {}'.format(bot.user.name, bot.user.id, time.ctime()))
