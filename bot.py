@@ -153,3 +153,6 @@ async def parse_feed():
     await send(discord_message)
 
 bot.run(auth.BOT_TOKEN)
+
+if __name__ == "__main__":
+    app.run()
